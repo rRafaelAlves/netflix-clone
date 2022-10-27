@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import MovieRow from "./components/MovieRow";
+import Tmdb from "./Tmdb";
+import { CategoryMovies } from "./types/AllList";
 
-function App() {
+const App = () => {
+
+  const [movieList, setMovieList] = React.useState<Array<CategoryMovies>>([])
+  const { getHomeList } = Tmdb
+
+  React.useEffect(()=>{
+    const loadAll = async () =>{
+        let list = await getHomeList();
+        setMovieList(list)
+        console.log(list)
+    }
+
+    loadAll();
+  },[])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="page">
+        <section className="lists">
+          {movieList.map((list, index)=> (
+            
+           <MovieRow key={index} title={list.title} items={list.items}/>
+
+            ))}
+        </section>
     </div>
-  );
+  )
 }
 
 export default App;
