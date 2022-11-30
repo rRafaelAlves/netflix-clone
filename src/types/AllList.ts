@@ -4,8 +4,6 @@ export type CategoryMovies = {
     items: items
 }
 
-
-
 export type Results = {
     title: string;
     poster_path: string;
