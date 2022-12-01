@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 export const Container = styled.div<{background: string}>`
  height: 100vh;
+ width: 100%;
  background-size: cover;
  background-position: center;
  background-image: url(${props => props.background});
@@ -22,13 +23,45 @@ export const Container = styled.div<{background: string}>`
         padding-left: 30px;
         padding-bottom: 150px;
         padding-top: 70px;
-
     }
+
+    @media (max-width: 760px){
+        &{
+            height: 80vh;
+        }
+    }
+`
+
+export const MovieDescription = styled.div`
+margin-top: 15px;
+font-size: 20px;
+color: #999;
+max-width: 40%;
+text-overflow: ellipsis;
+overflow: hidden;
+display: -webkit-box;
+-webkit-line-clamp: 5;
+-webkit-box-orient: vertical;
+
+@media (max-width: 760px){
+        &{
+            font-size: 14px;
+            max-width: 90%;
+            margin-right: 30px;
+        }
+    }
+
 `
 
 export const MovieName = styled.div`
 font-size: 60px;
 font-weight: bold;
+
+@media (max-width: 760px){
+        &{
+            font-size: 40px;
+        }
+    }
 `
 export const InfoMovie = styled.div`
 font-size: 18px;
@@ -42,13 +75,14 @@ margin-top: 15px;
     display: inline-block;
     margin-right: 15px;
 }
+
+@media (max-width: 760px){
+        &{
+            font-size: 16px;
+        }
+    }
 `
-export const MovieDescription = styled.div`
-margin-top: 15px;
-font-size: 20px;
-color: #999;
-max-width: 40%;
-`
+
 
 export const Buttons = styled.div`
 margin-top: 15px;
@@ -75,10 +109,22 @@ color: #fff;
 a:hover{
 opacity: 0.7;
 }
+
+@media (max-width: 760px){
+        .watchButton, .addButton{
+            font-size: 16px;
+        }
+    }
 `
 
 export const MovieGenres = styled.div`
 margin-top: 15px;
 font-size: 18px;
 color: #999;
+
+@media (max-width: 760px){
+        &{
+            font-size: 14px;
+        }
+    }
 `

@@ -7,6 +7,7 @@ import { FeatureMovieType } from "./types/FeatureMovie";
 import './App.css'
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import { LoadingContainer } from "./GlobalStyles";
 
 
 const App = () => {
@@ -27,7 +28,6 @@ const App = () => {
         let chosen = originals[0].items.results[randomChosen];
         let chosenInfo = await Tmdb.getMovieInfo(chosen.id, 'tv');
         setFeatureData(chosenInfo);
-        console.log(chosenInfo)
     }
 
     loadAll();
@@ -62,6 +62,12 @@ const App = () => {
             ))}
         </section>
         <Footer />
+        {
+        movieList.length <= 0 &&         
+        <LoadingContainer>
+          <img src="https://media.wired.com/photos/592744d3f3e2356fd800bf00/master/w_2560%2Cc_limit/Netflix_LoadTime.gif" alt="Carregando" />
+        </LoadingContainer>
+        }
     </div>
   )
 }
